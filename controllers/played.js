@@ -1,30 +1,27 @@
-const Task = require('../models/tasks');
+const Played = require('../models/played');
 
-//gets all task
-const getAllTask = async (req, res) => {
+const getAllPlayed = async (req, res) => {
   try {
-    const task = await Task.find({});
+    const task = await Played.find({});
     res.status(200).json({ task });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 };
 
-//create a task
-const createTask = async (req, res) => {
+const createPlayed = async (req, res) => {
   try {
-    const task = await Task.create(req.body);
+    const task = await Played.create(req.body);
     res.status(201).json({ task });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 };
 
-//gets a unique task
-const getTask = async (req, res) => {
+const getPlayed = async (req, res) => {
   try {
     const { id: taskID } = req.params;
-    const task = await Task.findOne({ _id: taskID });
+    const task = await Played.findOne({ _id: taskID });
     if (!task) {
       return res.status(404).json({ msg: `No task with id ${taskID}` });
     }
@@ -35,11 +32,10 @@ const getTask = async (req, res) => {
   }
 };
 
-//delete a task
-const deleteTask = async (req, res) => {
+const deletePlayed = async (req, res) => {
   try {
     const { id: taskID } = req.params;
-    const task = await Task.findOneAndDelete({ _id: taskID });
+    const task = await Played.findOneAndDelete({ _id: taskID });
     if (!task) {
       return res.status(404).json({ msg: `No task with id ${taskID}` });
     }
@@ -49,11 +45,10 @@ const deleteTask = async (req, res) => {
   }
 };
 
-//update a task
-const updateTask = async (req, res) => {
+const unpdatePlayed = async (req, res) => {
   try {
     const { id: taskID } = req.params;
-    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
+    const task = await Played.findOneAndUpdate({ _id: taskID }, req.body, {
       new: true,
       runValidators: true,
     });
@@ -67,9 +62,9 @@ const updateTask = async (req, res) => {
 };
 
 module.exports = {
-  getAllTask,
-  createTask,
-  getTask,
-  updateTask,
-  deleteTask,
+  getAllPlayed,
+  createPlayed,
+  getPlayed,
+  deletePlayed,
+  unpdatePlayed,
 };

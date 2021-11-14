@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TaskSchema = new mongoose.Schema({
+const PlayedSchema = new mongoose.Schema({
   home: {
     type: String,
     required: [true, 'must provide a team'],
@@ -25,9 +25,8 @@ const TaskSchema = new mongoose.Schema({
     trim: true,
     maxLength: [20, 'name cannot be more than 20 characters'],
   },
-  start_time: {
+  scores: {
     type: String,
-    required: [true, 'must provide a name'],
     trim: true,
     maxLength: [20, 'name cannot be more than 20 characters'],
   },
@@ -37,4 +36,4 @@ const TaskSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Task', TaskSchema);
+module.exports = mongoose.model('PlayedGames', PlayedSchema);
