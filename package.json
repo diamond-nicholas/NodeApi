@@ -6,7 +6,15 @@
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development&& node app.js",
+    "start-prod": "set NODE_ENV=production&& node app.js"
+  },
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "v15.14.0"
   }
 }
